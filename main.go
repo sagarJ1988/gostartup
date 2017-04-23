@@ -75,8 +75,8 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 func Login(w http.ResponseWriter, r *http.Request) {
 	// Join each row on struct inside the Slice
 
-	//FirstName, LastName, Email := sessions.GetAll(r)
-	//log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	FirstName, LastName, Email := sessions.GetAll(r)
+	log.Println("session data ", FirstName+" "+LastName+" "+Email)
 
 	if r.Method != "POST" {
 		tmpl.ExecuteTemplate(w, "login.html", nil)
