@@ -33,7 +33,7 @@ var err error
 func main() {
 	log.Println("server started on: http://localhost:9000")
 
-	db, err = sql.Open("mysql", "root:root@/gostartup")
+	db, err = sql.Open("mysql", "root:password@/gostartup")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -75,8 +75,8 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 func Login(w http.ResponseWriter, r *http.Request) {
 	// Join each row on struct inside the Slice
 
-	FirstName, LastName, Email := sessions.GetAll(r)
-	log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	//FirstName, LastName, Email := sessions.GetAll(r)
+	//log.Println("session data ", FirstName+" "+LastName+" "+Email)
 
 	if r.Method != "POST" {
 		tmpl.ExecuteTemplate(w, "login.html", nil)
@@ -115,7 +115,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	if databasePassword != encPassword {
 		log.Println("Password not matched")
-		http.Redirect(w, r, "/", 301)
+		tmpl.ExecuteTemplate(w, "login.html", nil)
+		return
 	}
 
 	sess := &sessions.SessionData{1, "sagar", "jagtap", "sagar@gmail.com"}
@@ -176,8 +177,8 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 }
 
 func Dashboard(w http.ResponseWriter, r *http.Request) {
-	// FirstName, LastName, Email := sessions.GetAll(r)
-	// log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	FirstName, LastName, Email := sessions.GetAll(r)
+	log.Println("session data ", FirstName+" "+LastName+" "+Email)
 	tmpl.ExecuteTemplate(w, "index.html", nil)
 }
 
