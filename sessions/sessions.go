@@ -19,7 +19,7 @@ var CookieHandler = securecookie.New(
 
 func Setsession(sess interface{}, w http.ResponseWriter) {
 	s, _ := sess.(*SessionData)
-	value := map[string]string{
+	value := map[string]SessionData{
 		"FirstName": s.FirstName,
 		"LastName":  s.LastName,
 		"Email":     s.Email,

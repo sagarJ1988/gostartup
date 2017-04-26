@@ -30,6 +30,12 @@ var tmpl = template.Must(template.ParseGlob("templates/*"))
 var db *sql.DB
 var err error
 
+type UserData struct {
+	Fname string
+	Lname string
+	Email string
+}
+
 func main() {
 	log.Println("server started on: http://localhost:9000")
 
@@ -75,8 +81,8 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 func Login(w http.ResponseWriter, r *http.Request) {
 	// Join each row on struct inside the Slice
 
-	//FirstName, LastName, Email := sessions.GetAll(r)
-	//log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	Fname, Lname, Email := sessions.GetAll(r)
+	log.Println("session data ", Fname+" "+Lname+" "+Email)
 
 	if r.Method != "POST" {
 		tmpl.ExecuteTemplate(w, "login.html", nil)
@@ -103,8 +109,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	var databaseUsername string
 	var databasePassword string
+	var dataID int
+	var FirstName string
+	var LastName string
 
-	err := db.QueryRow("select userName,password from user where userName=?", username).Scan(&databaseUsername, &databasePassword)
+	err := db.QueryRow("select id, firstName,lastname, userName,password from user where userName=?", username).Scan(&dataID, &FirstName, &LastName, &databaseUsername, &databasePassword)
 
 	if err != nil {
 		http.Redirect(w, r, "/", 301)
@@ -119,7 +128,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	sess := &sessions.SessionData{1, "sagar", "jagtap", "sagar@gmail.com"}
+	sess := &sessions.SessionData{dataID, FirstName, LastName, databaseUsername}
 
 	sessions.Setsession(sess, w)
 
@@ -179,7 +188,8 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 func Dashboard(w http.ResponseWriter, r *http.Request) {
 	FirstName, LastName, Email := sessions.GetAll(r)
 	log.Println("session data ", FirstName+" "+LastName+" "+Email)
-	tmpl.ExecuteTemplate(w, "index.html", nil)
+	u := &UserData{FirstName, LastName, Email}
+	tmpl.ExecuteTemplate(w, "index.html", u)
 }
 
 func User(w http.ResponseWriter, r *http.Request) {
