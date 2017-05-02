@@ -30,6 +30,26 @@ var tmpl = template.Must(template.ParseGlob("templates/*"))
 var db *sql.DB
 var err error
 
+//var tmpl = template.New("template")
+
+// func init() {
+// 	//tmpl = template.New("template")
+// 	filepath.Walk("templates/", func(path string, info os.FileInfo, err error) error {
+
+// 		if info.IsDir() || !strings.HasSuffix(path, ".html") {
+// 			return nil // ignore directories and other files
+// 		}
+
+// 		if strings.HasSuffix(path, ".html") {
+// 			log.Println(path)
+// 			tmpl.ParseFiles(path)
+// 		}
+
+// 		return nil
+// 	})
+
+// }
+
 type UserData struct {
 	Fname string
 	Lname string
