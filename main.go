@@ -39,7 +39,7 @@ type UserData struct {
 func main() {
 	log.Println("server started on: http://localhost:9000")
 
-	db, err = sql.Open("mysql", "root:password@/gostartup")
+	db, err = sql.Open("mysql", "root:root@/gostartup")
 	if err != nil {
 		panic(err.Error())
 	}
