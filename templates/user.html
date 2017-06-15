@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
@@ -10,7 +11,7 @@
 
     <title>Form Component | Creative - Bootstrap 3 Responsive Admin Template</title>
 
-    <!-- Bootstrap CSS -->    
+    <!-- Bootstrap CSS -->
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
     <link href="../resources/css/bootstrap-theme.css" rel="stylesheet">
@@ -19,9 +20,9 @@
     <link href="../resources/css/elegant-icons-style.css" rel="stylesheet" />
     <link href="../resources/css/font-awesome.min.css" rel="stylesheet" />
     <!-- date picker -->
-    
+
     <!-- color picker -->
-    
+
     <!-- Custom styles -->
     <link href="../resources/css/style.css" rel="stylesheet">
     <link href="../resources/css/style-responsive.css" rel="stylesheet" />
@@ -33,88 +34,89 @@
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
 
-  </head>
-  <body>
+</head>
 
-  <!-- container section start -->
-  <section id="container" class="">
-      <!--header start-->
-      {{ template "header.html" }}    
-      <!--header end-->
+<body>
 
-      <!--sidebar start-->
-      {{ template "sidebar.html" }}
-      <!--sidebar end-->
+    <!-- container section start -->
+    <section id="container" class="">
+        <!--header start-->
+        {{ template "header.html" .}}
+        <!--header end-->
 
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-		  <div class="row">
-				<div class="col-lg-12">
-					<h3 class="page-header"><i class="fa fa-file-text-o"></i> Form elements</h3>
-					<ol class="breadcrumb">
-						<li><i class="fa fa-home"></i><a href="/dashboard">Home</a></li>
-						<li><i class="icon_document_alt"></i>User</li>
-						<!--<li><i class="fa fa-file-text-o"></i>Form elements</li>-->
-					</ol>
-				</div>
-			</div>
-              
-              <!-- Basic Forms & Horizontal Forms-->
-              
-              <div class="row">
-                  <div class="col-lg-12">
-                      <section class="panel">
-                          <header class="panel-heading">
-                              Basic Forms
-                          </header>
-                          <div class="panel-body">
-                              <form role="form">
-                                  <div class="form-group">
-                                      <label for="exampleInputEmail1">Email address</label>
-                                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="exampleInputPassword1">Password</label>
-                                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="exampleInputFile">File input</label>
-                                      <input type="file" id="exampleInputFile">
-                                      <p class="help-block">Example block-level help text here.</p>
-                                  </div>
-                                  <div class="checkbox">
-                                      <label>
+        <!--sidebar start-->
+        {{ template "sidebar.html" }}
+        <!--sidebar end-->
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="fa fa-file-text-o"></i> Form elements</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="/dashboard">Home</a></li>
+                            <li><i class="icon_document_alt"></i>User</li>
+                            <!--<li><i class="fa fa-file-text-o"></i>Form elements</li>-->
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Basic Forms & Horizontal Forms-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Basic Forms
+                            </header>
+                            <div class="panel-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">File input</label>
+                                        <input type="file" id="exampleInputFile">
+                                        <p class="help-block">Example block-level help text here.</p>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
                                           <input type="checkbox"> Check me out
                                       </label>
-                                  </div>
-                                  <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
 
-                          </div>
-                      </section>
-                  </div>
-                  
-              </div>
-              
+                            </div>
+                        </section>
+                    </div>
 
-             
-          </section>
-      </section>
-      <!--main content end-->
-      <div class="text-right">
-        <div class="credits">
-            <!-- 
+                </div>
+
+
+
+            </section>
+        </section>
+        <!--main content end-->
+        <div class="text-right">
+            <div class="credits">
+                <!-- 
                 All the links in the footer should remain intact. 
                 You can delete the links only if you purchased the pro version.
                 Licensing information: https://bootstrapmade.com/license/
                 Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
             -->
-            
+
+            </div>
         </div>
-    </div>
-  </section>
-  <!-- container section end -->
+    </section>
+    <!-- container section end -->
     <!-- javascripts -->
     <script src="../resources/js/jquery.js"></script>
     <script src="../resources/js/bootstrap.min.js"></script>
@@ -131,9 +133,9 @@
     <script src="../resources/js/bootstrap-switch.js"></script>
     <!--custom tagsinput-->
     <script src="../resources/js/jquery.tagsinput.js"></script>
-    
+
     <!-- colorpicker -->
-   
+
     <!-- bootstrap-wysiwyg -->
     <script src="../resources/js/jquery.hotkeys.js"></script>
     <script src="../resources/js/bootstrap-wysiwyg.js"></script>
@@ -146,5 +148,6 @@
     <script src="../resources/js/scripts.js"></script>
 
 
-  </body>
+</body>
+
 </html>

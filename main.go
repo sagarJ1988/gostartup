@@ -30,26 +30,6 @@ var tmpl = template.Must(template.ParseGlob("templates/*"))
 var db *sql.DB
 var err error
 
-//var tmpl = template.New("template")
-
-// func init() {
-// 	//tmpl = template.New("template")
-// 	filepath.Walk("templates/", func(path string, info os.FileInfo, err error) error {
-
-// 		if info.IsDir() || !strings.HasSuffix(path, ".html") {
-// 			return nil // ignore directories and other files
-// 		}
-
-// 		if strings.HasSuffix(path, ".html") {
-// 			log.Println(path)
-// 			tmpl.ParseFiles(path)
-// 		}
-
-// 		return nil
-// 	})
-
-// }
-
 type UserData struct {
 	Fname string
 	Lname string
@@ -58,7 +38,6 @@ type UserData struct {
 
 func main() {
 	log.Println("server started on: http://localhost:9000")
-
 	db, err = sql.Open("mysql", "root:password@/gostartup")
 	if err != nil {
 		panic(err.Error())
@@ -143,8 +122,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	//log.Println("dbpass : " + databasePassword + " \tencpassword : " + encPassword)
 
 	if databasePassword != encPassword {
-		log.Println("Password not matched")
-		tmpl.ExecuteTemplate(w, "login.html", nil)
+		//log.Println("Password not matched")
+		msg.Errors["ErrorMessage"] = "Invalid username and password"
+		tmpl.ExecuteTemplate(w, "login.html", msg)
 		return
 	}
 
@@ -172,7 +152,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if msg.ValidateSignup() == false {
-		//log.Println("errors ", msg)
+		log.Println("errors ", msg)
 		tmpl.ExecuteTemplate(w, "login.html", msg)
 		return
 	}
@@ -213,7 +193,10 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func User(w http.ResponseWriter, r *http.Request) {
-	tmpl.ExecuteTemplate(w, "user.html", nil)
+	FirstName, LastName, Email := sessions.GetAll(r)
+	//log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	u := &UserData{FirstName, LastName, Email}
+	tmpl.ExecuteTemplate(w, "user.html", u)
 }
 
 // func formValidation(w http.ResponseWriter, r *http.Request) {
@@ -221,9 +204,15 @@ func User(w http.ResponseWriter, r *http.Request) {
 // }
 
 func Listing(w http.ResponseWriter, r *http.Request) {
-	tmpl.ExecuteTemplate(w, "listing.html", nil)
+	FirstName, LastName, Email := sessions.GetAll(r)
+	//log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	u := &UserData{FirstName, LastName, Email}
+	tmpl.ExecuteTemplate(w, "listing.html", u)
 }
 
 func Profile(w http.ResponseWriter, r *http.Request) {
-	tmpl.ExecuteTemplate(w, "profile.html", nil)
+	FirstName, LastName, Email := sessions.GetAll(r)
+	//log.Println("session data ", FirstName+" "+LastName+" "+Email)
+	u := &UserData{FirstName, LastName, Email}
+	tmpl.ExecuteTemplate(w, "profile.html", u)
 }
